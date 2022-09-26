@@ -1,0 +1,8 @@
+find_package(CapnProto CONFIG REQUIRED)
+capnp_generate_cpp(calculatorSources calculatorHeaders myservice.capnp)
+add_executable(calculator-client client.cpp ${calculatorSources})
+  add_executable(calculator-server server.cpp ${calculatorSources})
+target_link_libraries(calculator-client PRIVATE CapnProto::capnp-rpc)
+target_link_libraries(calculator-server PRIVATE CapnProto::capnp-rpc)
+target_include_directories(calculator-client PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(calculator-server PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

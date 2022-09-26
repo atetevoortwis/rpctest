@@ -25,7 +25,12 @@ RUN git clone --recurse-submodules -b v1.48.1 --depth 1 --shallow-submodules htt
 RUN cd /grpc && mkdir -p cmake/build
 WORKDIR /grpc/cmake/build
 RUN cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF ../..
-RUN make -j
+RUN make -j2
 RUN sudo make install
 # ENV PATH="${PATH}:${MY_GRPC_DIR}/bin"
+
+# CapnProto
+WORKDIR /
+RUN git clone https://github.com/capnproto/capnproto.git
+RUN mkdir -p /capnproto/build && cd /capnproto/build && cmake ../ && cmake --build . --target install
 WORKDIR /workspaces/
