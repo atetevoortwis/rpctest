@@ -25,7 +25,7 @@ RUN git clone --recurse-submodules -b v1.48.1 --depth 1 --shallow-submodules htt
 RUN cd /grpc && mkdir -p cmake/build
 WORKDIR /grpc/cmake/build
 RUN cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF ../..
-RUN make -j 4
+RUN make -j
 RUN sudo make install
 # ENV PATH="${PATH}:${MY_GRPC_DIR}/bin"
 WORKDIR /workspaces/

@@ -1,0 +1,9 @@
+{
+    "cmake.configureOnEdit": true,
+    "cmake.configureSettings": {
+    
+    },
+    "files.associations": {
+        "ostream": "cpp"
+    }
+}
